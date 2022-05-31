@@ -5,7 +5,6 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
-	"log"
 	"net"
 	"strconv"
 	"sync"
@@ -70,7 +69,6 @@ func newAMIAdapter(s *Settings, eventEmitter func(string, string)) (*amiAdapter,
 				break
 			}
 			func() {
-				log.Println(a.reconnect)
 				if !a.reconnect {
 					return
 				}

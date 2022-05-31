@@ -96,6 +96,7 @@ func newAMIAdapter(s *Settings, eventEmitter func(string, string)) (*amiAdapter,
 						err = a.login(conn)
 						if err != nil {
 							go a.emitEvent("error", fmt.Sprintf("Asterisk login error: %s", err.Error()))
+							a.reconnect = false
 							time.Sleep(s.ReconnectInterval)
 							return
 						}
